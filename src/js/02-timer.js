@@ -4,14 +4,15 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
 
-const datePickerTime = document.querySelector('#datetime-picker');
+const datePicker = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
 const dataDays = document.querySelector('[data-days]');
 const dataHours = document.querySelector('[data-hours]');
-const dataminutes = document.querySelector('[data-minutes]');
+const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 
 let selectDate = null;
+let countInterval;
 
 const options = {
   enableTime: true,
@@ -60,11 +61,11 @@ const startCounting = () => {
     }
     const objectTime = convertMs(difference);
 
-    daysData.textContent = addLeadingZero(objectTime.days);
-    hoursData.textContent = addLeadingZero(objectTime.hours);
-    minutesData.textContent = addLeadingZero(objectTime.minutes);
-    secondsData.textContent = addLeadingZero(objectTime.seconds);
+    dataDays.textContent = addLeadingZero(objectTime.days);
+    dataHours.textContent = addLeadingZero(objectTime.hours);
+    dataMinutes.textContent = addLeadingZero(objectTime.minutes);
+    dataSeconds.textContent = addLeadingZero(objectTime.seconds);
   }, 1000);
 };
 
-bthStart.addEventListener('click', startCounting);
+startBtn.addEventListener('click', startCounting);
